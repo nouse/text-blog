@@ -1,5 +1,5 @@
 title: "A Lucky Day"
-date: 10/10/2010
+date: 2010-10-10
 
 # 今天是我的幸运日
 

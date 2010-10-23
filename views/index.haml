@@ -1,9 +1,13 @@
 !!!
 %html
   %head
-    %title Hello, world
+    %title SimpleBlog
   %body
-    - @parsed.each do |content|
-      %p
-        %a{ :href => to_url(content[0]) }= content[0]["title"]
-      %p= content[1]
+    %header
+      %h1 Welcome to my simple blog.
+    %section
+      - @articles.each do |article|
+        %header
+          %h2
+            %a{ :href => article.path }= article.title
+        %article= article.body
