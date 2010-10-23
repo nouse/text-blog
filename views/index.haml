@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %title Hello, world
+  %body
+    - @parsed.each do |content|
+      %p
+        %a{ :href => to_url(content[0]) }= content[0]["title"]
+      %p= content[1]

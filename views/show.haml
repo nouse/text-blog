@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title Hello, world
+  %body
+    %p
+      %a{ :href => to_url(@article[0]) }= @article[0]["title"]
+    %p= @article[1]
+    %section.comments
+      #disqus_thread
+      %script{ :type => "text/javascript" } disqus_developer=1;
+      %script{ :type => "text/javascript", :src => "http://disqus.com/forums/wujiang/embed.js" }
+
