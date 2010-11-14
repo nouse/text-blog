@@ -2,10 +2,20 @@ GEM
   remote: http://rubygems.org/
   specs:
     daemons (1.1.0)
+    diff-lcs (1.1.2)
     eventmachine (0.12.10)
     haml (3.0.22)
+    nokogiri (1.4.3.1)
     rack (1.2.1)
     rdiscount (1.6.5)
+    rspec (2.1.0)
+      rspec-core (~> 2.1.0)
+      rspec-expectations (~> 2.1.0)
+      rspec-mocks (~> 2.1.0)
+    rspec-core (2.1.0)
+    rspec-expectations (2.1.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.1.0)
     shotgun (0.8)
       rack (>= 1.0)
     sinatra (1.0)
@@ -20,7 +30,9 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  nokogiri
   rdiscount
+  rspec
   shotgun
   sinatra
   thin

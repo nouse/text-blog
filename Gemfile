@@ -4,3 +4,8 @@ gem 'rdiscount'
 gem 'sinatra'
 gem 'shotgun'
 gem 'thin'
+
+group :test do
+  gem 'rspec'
+  gem 'nokogiri'
+end
