@@ -9,5 +9,5 @@
       - @articles.each do |article|
         %header
           %h2
+            = article.date.strftime("%Y年%m月%d日")
             %a{ :href => article.path }= article.title
-        %article= article.body

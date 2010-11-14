@@ -6,7 +6,7 @@ require 'rdiscount'
 EXT = ".txt"
 
 class Article
-  attr_reader :title, :body
+  attr_reader :title, :body, :date
 
   def initialize(file_path)
     yaml, md = File.read(file_path).split("\n\n", 2)
@@ -23,6 +23,10 @@ class Article
 
   def title
     @options["title"]
+  end
+
+  def date
+    @options["date"]
   end
 end
 

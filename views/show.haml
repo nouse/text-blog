@@ -5,5 +5,7 @@
   %body
     %header
       %h1
-        %a{ :href => @article.path }= @article.title
+        = @article.title
     %article= @article.body
+    %footer
+      %a{ :href => "/" } 返回主页
