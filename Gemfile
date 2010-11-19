@@ -8,4 +8,6 @@ gem 'thin'
 group :test do
   gem 'rspec'
   gem 'nokogiri'
+  gem 'rev'
+  gem 'watchr'
 end

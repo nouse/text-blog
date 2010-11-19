@@ -20,4 +20,9 @@ describe "blog" do
     (doc/'article h1').text.should == "今天是我的幸运日"
     resp.body.should match "钱包里面正好有42块钱"
   end
+
+  it "should halt 404 for nonexisting blog" do
+    resp = @req.get "/2010/10/10/not-lucky-day"
+    resp.status.should == 404
+  end
 end
