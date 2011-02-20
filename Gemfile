@@ -2,12 +2,11 @@ source "http://rubygems.org"
 gem 'haml'
 gem 'rdiscount'
 gem 'sinatra'
-gem 'shotgun'
-gem 'thin'
+gem 'unicorn'
+gem 'tilt'
 
 group :test do
-  gem 'rspec'
-  gem 'nokogiri'
-  gem 'rev'
-  gem 'watchr'
+  gem 'steak'
+  gem 'capybara'
+  gem 'spork', '~>0.9.0.rc'
 end
