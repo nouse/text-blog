@@ -16,8 +16,10 @@ feature "blog" do
     should have_content "钱包里面正好有42块钱"
   end
 
-  scenario "article not found" do
-    visit "/2010/10/10/not-lucky-day"
+  context "article not found" do
+    background {
+      visit "/2010/10/10/not-lucky-day"
+    }
     its(:status_code) { should == 404 }
   end
 end
