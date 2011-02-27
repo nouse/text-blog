@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="alternate" type="application/atom+xml" title="<%= title %> - feed" href="/index.xml" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <title><%= title %></title>
+  </head>
+  <body>
+    <section>
+      <%= yield %> 
+    </section>
+    <footer>
+      <a href="/">Home</a>
+      <a href="/archives">Archives</a>
+      <a href="/index.xml">Feed</a>
+    </footer>
+  </body>
+</html>
+

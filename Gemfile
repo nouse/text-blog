@@ -1,12 +1,12 @@
 source "http://rubygems.org"
-gem 'haml'
 gem 'rdiscount'
-gem 'sinatra'
-gem 'unicorn'
+gem 'sinatra', '1.2.0.d'
+gem 'shotgun'
+gem 'thin'
 gem 'tilt'
+gem 'builder'
 
 group :test do
   gem 'steak'
   gem 'capybara'
-  gem 'spork', '~>0.9.0.rc'
 end

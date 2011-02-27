@@ -1,49 +1,43 @@
-require 'haml'
+require 'builder'
 require 'sinatra'
-require 'yaml'
-require 'rdiscount'
-
-EXT = ".txt"
-
-class Article
-  attr_reader :title, :body, :date
-
-  def initialize(file_path)
-    yaml, md = File.read(file_path).split("\n\n", 2)
-
-    @options = YAML.load(yaml)
-    @options["slug"] = File.basename(file_path, EXT).split('-',4)[-1]
-
-    @body = RDiscount.new(md).to_html
-  end
-
-  def path
-    @options["date"].strftime("/%Y/%m/%d/")+ @options["slug"]
-  end
-
-  %w(title date slug).each do |m|
-    class_eval "def #{m};@options['#{m}'];end"
-  end
-end
+$LOAD_PATH << File.dirname(__FILE__)+"/lib"
+require 'article'
 
 configure do
-  ALL_ARTICLES = Dir.glob("articles/*#{EXT}").map do |article_file|
-    Article.new(article_file)
+  Article.load(File.dirname(__FILE__)+"/articles")
+end
+
+helpers do
+  def archives
+    Article.articles
+  end
+
+  def articles
+    Article.articles
   end
 end
 
+set :views, File.dirname(__FILE__)+'/templates'
+set :title => "Wu Jiang's blog"
+
 get '/' do
-  @articles = ALL_ARTICLES
-  haml :index
+  erb :"pages/index", :locals => { 
+    :title => settings.title
+  }
+end
+
+get "/index.xml" do
+  @config = {}
+  builder :index
 end
 
 get '/:year/:month/:day/:slug' do |year, month, day, slug|
-  @article = ALL_ARTICLES.find do |article| 
-    article.date == Date.civil(year.to_i, month.to_i, day.to_i) &&
-      article.slug == slug
-  end
+  @config = {}
+  article = Article["#{year}-#{month}-#{day}-#{slug}"]
+  pass unless article
+  erb :"pages/article", :locals => article.to_hash
+end
 
-  halt 404 unless @article
-                               
-  haml :show
+get "/archives" do
+  erb :"pages/archives", :locals => { :title => settings.title }
 end
